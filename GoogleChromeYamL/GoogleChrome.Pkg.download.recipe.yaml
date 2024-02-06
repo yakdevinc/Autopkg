@@ -1,0 +1,22 @@
+Description: Downloads enterprise version of Google Chrome broswer
+Identifier: com.github.yakdevinc.autopkg.GooglechromeYamL.download.GoogleChrome
+MinimumVersion: "2.3"
+
+Input:
+  NAME: Google Chrome
+  DOWNLOADURL: https://dl.google.com/chrome/mac/stable/accept_tos%3Dhttps%253A%252F%252Fwww.google.com%252Fintl%252Fen_ph%252Fchrome%252Fterms%252F%26_and_accept_tos%3Dhttps%253A%252F%252Fpolicies.google.com%252Fterms/googlechrome.pkg
+  PKG_NAME: GoogleChromeEnt
+  
+Process:
+  - Processor: URLDownloader
+    Arguments:
+      filename: "%PKG_NAME%.pkg"
+      url: "%DOWNLOADURL%"
+
+  - Processor: CodeSignatureVerifier
+    Arguments:
+      expected_authority_names:
+        - "Developer ID Installer: Google LLC (EQHXZ8M8AV)"
+        - Developer ID Certification Authority
+        - Apple Root CA
+      input_path: "%pathname%"

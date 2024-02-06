@@ -1,0 +1,16 @@
+Description: Takes packaged chrome for enterprise and uploads to JAMF instance
+Identifier: com.github.yakdevinc.autopkg.GooglechromeYamL.pkg.GoogleChrome
+ParentRecipe: GoogleChrome.pkg.recipe.yaml
+MinimumVersion: "2.3"
+
+
+Process:
+  - Processor: JamfPackageUploader
+
+
+
+
+
+
+
+

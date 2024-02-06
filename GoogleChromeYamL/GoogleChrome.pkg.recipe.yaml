@@ -1,0 +1,40 @@
+Description: Packages version of Google Chrome that is downloaded from parent recipe and names according to vesion number.
+Identifier: com.github.yakdevinc.autopkg.GooglechromeYamL.pkg.GoogleChrome
+ParentRecipe: GoogleChrome.Pkg.download.recipe.yaml
+MinimumVersion: "2.3"
+
+Input:
+  NAME: GoogleChrome
+  PKG_NAME:
+  VERSIONING_STRING:
+  
+
+Process:
+  - Processor: FlatPkgUnpacker
+    Arguments: 
+      flat_pkg_path: "%pathname%"
+      destination_path: "%RECIPE_CACHE_DIR%/unpack"
+
+Process:
+  - Processor: PkgPayloadUnpacker
+    Arguments:
+      pkg_payload_path: "%RECIPE_CACHE_DIR%/unpack/GoogleChrome.pkg/Payload"
+      destination_path: "%RECIPE_CACHE_DIR%/unpack"
+
+Process:
+  - Processor: Plistreader
+    Arguments: 
+      info_path: "%RECIPE_CACHE_DIR%/unpack/Google Chrome.app"
+
+Process:
+  - Processor: PkgCopier
+    Arguments: 
+      source_pkg: "%pathname%"
+      pkg_path: "%RECIPE_CACHE_DIR%/GoogleChrome-%version%.pkg"
+
+Process: 
+  - Procesesor: PathDeleter
+    Arguments: 
+      path_list: "%RECIPE_CACHE_DIR%/unpack"
+
+
