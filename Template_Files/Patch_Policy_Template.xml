@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <patch_policy>
+    <general>
+      <id>1</id>
+      <name>Chrome patching testing</name>
+      <enabled>true</enabled>
+      <target_version>120.0.6099.109</target_version>
+      <release_date>1702414800000</release_date>
+      <incremental_update>false</incremental_update>
+      <reboot>false</reboot>
+      <minimum_os>10.15</minimum_os>
+      <kill_apps>
+        <kill_app>
+          <kill_app_name>Google Chrome.app</kill_app_name>
+          <kill_app_bundle_id>com.google.Chrome</kill_app_bundle_id>
+        </kill_app>
+      </kill_apps>
+      <distribution_method>prompt</distribution_method>
+      <allow_downgrade>false</allow_downgrade>
+      <patch_unknown>false</patch_unknown>
+    </general>
+    <scope>
+      <all_computers>false</all_computers>
+      <computers/>
+      <computer_groups>
+        <computer_group>
+          <id>1</id>
+          <name>All Managed Clients</name>
+        </computer_group>
+      </computer_groups>
+      <users/>
+      <buildings/>
+      <departments/>
+      <limitations>
+        <network_segments/>
+        <ibeacons/>
+      </limitations>
+      <exclusions>
+        <computers/>
+        <computer_groups/>
+        <users/>
+        <buildings/>
+        <departments/>
+        <network_segments/>
+        <ibeacons/>
+      </exclusions>
+    </scope>
+    <user_interaction>
+      <grace_period>
+        <grace_period_duration>15</grace_period_duration>
+        <notification_center_subject>Important</notification_center_subject>
+        <message>$APP_NAMES will quit in $DELAY_MINUTES minutes so that $SOFTWARE_TITLE can be updated. Save anything you are working on and quit the app(s).</message>
+      </grace_period>
+    </user_interaction>
+    <software_title_configuration_id>1</software_title_configuration_id>
+  </patch_policy>

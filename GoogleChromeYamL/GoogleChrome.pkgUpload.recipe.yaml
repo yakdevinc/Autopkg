@@ -1,0 +1,39 @@
+Description: Takes packaged chrome for enterprise and uploads to JAMF instance
+Identifier: com.github.yakdevinc.autopkg.GooglechromeYamL.pkg.GoogleChrome
+ParentRecipe: GoogleChrome.pkg.recipe.yaml
+MinimumVersion: "2.3"
+
+Input:
+  CATEGORY: Browsers
+  POLICY_CATEGORY: UPDATES
+  UPDATE_PREDICATE: pkg_uploaded == False
+  POLICY_TEMPLATE: Computer_Policy_Template_wo_selfService.xml
+  POLICY_NAME: LATEST %NAME% UPDATE
+
+Process:
+  - Processor: com.github.grahampugh.jamf-upload.processors/JamfCategoryUploader
+    Arguments:
+      category_name: '%CATEGORY%'
+
+Process:
+  - Processor: com.github.grahampugh.jamf-upload.processors/JamfCategoryUploader
+    Arguments:
+      category_name: '%POLICY_CATEGORY%'
+
+Process:
+  - Processor: com.github.grahampugh.jamf-upload.processors/JamfPackageUploader
+    Arguments:
+      pkg_category: '%CATEGORY%'
+      
+Process:
+  - Processor: StopProcessingIf
+    Arguments:
+      Predicate: "%UPDATE_PREDICATE%"
+
+Process:
+  - Processor: com.github.grahampugh.jamf-upload.processors/JamfPolicyUploader
+    Arguments:
+      Policy_Name: '%POLICY_NAME%'
+      policy_template: '%POLICY_TEMPLATE%'
+      POLICY_CATEGORY: Updates
+
