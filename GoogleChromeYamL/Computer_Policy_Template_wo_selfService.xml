@@ -1,18 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--
-  Jamf Computer Policy Template. 
-  If uusing this template, these variables must be set:
-  %Policy_Name% - name of policy
-  %POLICY_CATEGORY% - Category that policy should be in
-  $ALL_COMP% - True or False for scope of all computers
-  %COMPUTERS% - individual computers you would like in scope for policy
-  %COMP_GROUPS% - Computer groups (smart or static) you would like to be in scope for policy
-  %DENY_COMP% - Specific computers you would like EXCLUDED from the policy scope
-  %DENY_COMPGROUPS% - Specific computer smart/static groups you would like excluded from the policy
-  %PKG_NAME% - Name of package to be used in policy. Should correspond to a package already uploaded to Jamf.
-
--->
   <policy>
     <general>
       <name>%Policy_Name%</name>
@@ -29,14 +16,11 @@
       <all_computers>true</all_computers>
     </scope>
     <self_service>
-      <use_for_self_service>False</use_for_self_service>
+      <use_for_self_service>false</use_for_self_service>
     </self_service>
     <package_configuration>
       <packages>
-        <size>1</size>
-        <package>
-          <name>%pkg_name%</name>
-        </package>
+        <size>0</size>
       </packages>
     </package_configuration>
   </policy>

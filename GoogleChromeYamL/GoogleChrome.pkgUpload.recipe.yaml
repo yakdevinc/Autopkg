@@ -1,39 +1,28 @@
 Description: Takes packaged chrome for enterprise and uploads to JAMF instance
-Identifier: com.github.yakdevinc.autopkg.GooglechromeYamL.pkg.GoogleChrome
-ParentRecipe: GoogleChrome.pkg.recipe.yaml
+Identifier: com.github.yakdevinc.autopkg.GooglechromeYamL.pkgupload.GoogleChrome
+ParentRecipe: com.github.yakdevinc.autopkg.GooglechromeYamL.pkg.GoogleChrome
 MinimumVersion: "2.3"
 
 Input:
   CATEGORY: Browsers
-  POLICY_CATEGORY: UPDATES
-  UPDATE_PREDICATE: pkg_uploaded == False
+  POLICY_CATEGORY: Updates
   POLICY_TEMPLATE: Computer_Policy_Template_wo_selfService.xml
   POLICY_NAME: LATEST %NAME% UPDATE
 
 Process:
-  - Processor: com.github.grahampugh.jamf-upload.processors/JamfCategoryUploader
-    Arguments:
-      category_name: '%CATEGORY%'
-
-Process:
-  - Processor: com.github.grahampugh.jamf-upload.processors/JamfCategoryUploader
-    Arguments:
-      category_name: '%POLICY_CATEGORY%'
-
-Process:
   - Processor: com.github.grahampugh.jamf-upload.processors/JamfPackageUploader
     Arguments:
-      pkg_category: '%CATEGORY%'
+      pkg_category: "%CATEGORY%"
+      sleep: 60
       
-Process:
-  - Processor: StopProcessingIf
+  - Processor: com.github.grahampugh.jamf-upload.processors/JamfCategoryUploader
     Arguments:
-      Predicate: "%UPDATE_PREDICATE%"
-
-Process:
+      category_name: "%POLICY_CATEGORY%"
+      Sleep: 60
+      
   - Processor: com.github.grahampugh.jamf-upload.processors/JamfPolicyUploader
     Arguments:
       Policy_Name: '%POLICY_NAME%'
-      policy_template: '%POLICY_TEMPLATE%'
-      POLICY_CATEGORY: Updates
-
+      policy_template: "%POLICY_TEMPLATE%"
+      POLICY_CATEGORY: "%POLICY_CATEGORY%"
+      pkg_name: '%pkg_name%'

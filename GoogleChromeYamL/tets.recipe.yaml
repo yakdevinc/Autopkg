@@ -1,0 +1,18 @@
+Description: Takes packaged chrome for enterprise and uploads to JAMF instance
+Identifier: com.github.test.policycreation.yaml
+MinimumVersion: "2.3"
+
+Input:
+  POLICY_NAME: TARAN TEST TIME
+  POLICY_TEMPLATE: /Users/tellis/Library/AutoPkg/RecipeRepos/com.github.yakdevinc.Autopkg/GoogleChromeYamL/Computer_Policy_Template_wo_selfService.xml
+  POLICY_CATEGORY: Updates
+
+
+
+
+Process:       
+  - Processor: com.github.grahampugh.jamf-upload.processors/JamfPolicyUploader
+    Arguments:
+      Policy_Name: '%POLICY_NAME%'
+      policy_template: "%POLICY_TEMPLATE%"
+      POLICY_CATEGORY: "%POLICY_CATEGORY%"

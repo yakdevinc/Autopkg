@@ -1,0 +1,16 @@
+Description: Takes packaged chrome for enterprise and uploads to JAMF instance
+Identifier: com.github.yakdevinc.autopkg.GooglechromeYamL.pkg.GoogleChrome
+MinimumVersion: "2.3"
+
+Input:
+  POLICY_CATEGORY: Updates
+  POLICY_TEMPLATE: Computer_Policy_Template_wo_selfService.xml
+  POLICY_NAME: LATEST Chrome UPDATE
+
+Process:
+  - Processor: com.github.grahampugh.jamf-upload.processors/JamfPolicyUploader
+    Arguments:
+      Policy_Name: '%POLICY_NAME%'
+      policy_template: "%POLICY_TEMPLATE%"
+      POLICY_CATEGORY: "%POLICY_CATEGORY%"
+      pkg_name: 'GoogleChrome-121.0.6167.160.pkg'
