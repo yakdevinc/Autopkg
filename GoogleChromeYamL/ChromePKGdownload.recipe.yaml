@@ -19,3 +19,24 @@ Process:
         - Developer ID Certification Authority
         - Apple Root CA
       input_path: "%pathname%"
+
+  - Processor: FlatPkgUnpacker
+    Arguments: 
+      flat_pkg_path: "%pathname%"
+      destination_path: "%RECIPE_CACHE_DIR%/unpack"
+
+  - Processor: PkgPayloadUnpacker
+    Arguments:
+      pkg_payload_path: "%RECIPE_CACHE_DIR%/unpack/GoogleChrome.pkg/Payload"
+      destination_path: "%RECIPE_CACHE_DIR%/unpack"
+
+  - Processor: PlistReader
+    Arguments: 
+      info_path: "%RECIPE_CACHE_DIR%/unpack/Google Chrome.app"
+
+  - Processor: PkgCopier
+    Arguments: 
+      source_pkg: "%pathname%"
+      pkg_path: "%RECIPE_CACHE_DIR%/GoogleChrome-%version%.pkg"
+
+

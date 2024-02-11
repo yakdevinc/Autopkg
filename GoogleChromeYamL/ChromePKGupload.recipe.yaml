@@ -1,6 +1,6 @@
 Description: Takes packaged chrome for enterprise and uploads to JAMF instance
 Identifier: com.github.yakdevinc.pkgupload.GoogleChrome
-ParentRecipe: com.github.yakdevinc.autopkg.pkg.GoogleChrome
+ParentRecipe: com.github.yakdevinc.autopkg.download.GoogleChrome
 MinimumVersion: "2.3"
 
 Input:
@@ -10,6 +10,10 @@ Input:
   POLICY_NAME: LATEST %NAME% UPDATE
 
 Process:
+ # - Procesesor: PathDeleter
+  #  Arguments: 
+   #   path_list: "%RECIPE_CACHE_DIR%/unpack"
+
   - Processor: com.github.grahampugh.jamf-upload.processors/JamfPackageUploader
     Arguments:
       pkg_category: "%CATEGORY%"
