@@ -1,5 +1,5 @@
 Description: Packages version of Google Chrome that is downloaded from parent recipe and names according to vesion number.
-Identifier: com.github.yakdevinc.pkg.GoogleChrome
+Identifier: com.github.yakdevinc.autopk.pkg.GoogleChrome
 ParentRecipe: com.github.yakdevinc.autopkg.download.GoogleChrome
 MinimumVersion: "2.3"
 
