@@ -1,10 +1,8 @@
 Description: Packages version of Google Chrome that is downloaded from parent recipe and names according to vesion number.
-Identifier: com.github.yakdevinc.autopkg.GooglechromeYamL.pkg.GoogleChrome
-ParentRecipe: GoogleChromePkgdownload.recipe.yaml
+Identifier: com.github.yakdevinc.pkg.GoogleChrome
+ParentRecipe: com.github.yakdevinc.autopkg.download.GoogleChrome
 MinimumVersion: "2.3"
 
-Input:
-  
 Process:
   - Processor: FlatPkgUnpacker
     Arguments: 

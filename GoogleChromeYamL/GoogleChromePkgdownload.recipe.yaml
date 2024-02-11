@@ -1,5 +1,5 @@
 Description: Downloads enterprise version of Google Chrome broswer
-Identifier: com.github.yakdevinc.autopkg.GooglechromeYamL.download.GoogleChrome
+Identifier: com.github.yakdevinc.autopkg.download.GoogleChrome
 MinimumVersion: "2.3"
 
 Input:
