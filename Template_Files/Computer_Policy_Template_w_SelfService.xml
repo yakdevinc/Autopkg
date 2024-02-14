@@ -1,33 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-  Jamf Computer Policy Template. 
-  If uusing this template, these variables must be set:
-  %Policy_Name% - name of policy
-  %POLICY_CATEGORY% - Category that policy should be in
-  $ALL_COMP% - True or False for scope of all computers
-  %COMPUTERS% - individual computers you would like in scope for policy
-  %COMP_GROUPS% - Computer groups (smart or static) you would like to be in scope for policy
-  %DENY_COMP% - Specific computers you would like EXCLUDED from the policy scope
-  %DENY_COMPGROUPS% - Specific computer smart/static groups you would like excluded from the policy
-  %SELF_SERVICE% - True or False for policy being available in Self Service
-  $INSTALL_TEXT% - Text on button for install in self-service
-  %REINSTALL_TEXT% - text for button in self service after initial install
-  %DESCRIPTION% - Text in description for self service.
-  %PATH_TO_SELF_SERVE_ICON% - File Path to self service icon to be used in policy
-  %NOTIFICATION% - True or False for Notifications to show for policy in Self service
-  %PKG_NAME% - Name of package to be used in policy. Should correspond to a package already uploaded to Jamf.
-
--->
   <policy>
     <general>
-      <name>%Policy_Name%</name>
+      <name>%policy_name%</name>
       <enabled>true</enabled>
       <trigger_checkin>True</trigger_checkin>
       <frequency>Once per computer</frequency>
-      <retry_event>check-in</retry_event>
-      <retry_attempts>2</retry_attempts>
-      <notify_on_each_failed_retry>false</notify_on_each_failed_retry>
       <category>
         <name>%POLICY_CATEGORY%</name>
       </category>
@@ -37,31 +14,15 @@
     </general>
     <scope>
       <all_computers>$ALL_COMP%</all_computers>
-      <computer_groups>%COMP_GROUPS%<computer_groups/>
-      <exclusions>
-        <computer_groups>%DENY_COMPGROUPS%<computer_groups/>
-      </exclusions>
     </scope>
     <self_service>
       <use_for_self_service>%SELF_SERVICE%</use_for_self_service>
-      <self_service_display_name/>
-      <install_button_text>$INSTALL_TEXT%</install_button_text>
-      <reinstall_button_text>%REINSTALL_TEXT%</reinstall_button_text>
-      <self_service_description>%DESCRIPTION%</self_service_description>
-      <force_users_to_view_description>false</force_users_to_view_description>
-      <self_service_icon>%PATH_TO_SELF_SERVE_ICON%</self_service_icon>
-      <feature_on_main_page>false</feature_on_main_page>
-      <self_service_categories/>
-      <notification>%NOTIFICATION%</notification>
-      <notification_type>Self Service</notification_type>
-      <notification_subject>Updates are available!</notification_subject>
-      <notification_message/>
     </self_service>
     <package_configuration>
       <packages>
         <size>1</size>
         <package>
-          <name>%PKG_NAME%</name>
+          <name>%pkg_name%</name>
           <action>Install</action>
         </package>
       </packages>
@@ -70,3 +31,5 @@
       <size>0</size>
     </scripts>
   </policy>
+
+  

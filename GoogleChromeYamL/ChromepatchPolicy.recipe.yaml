@@ -1,0 +1,20 @@
+Description: Uploads a patch policy and associates previously uploaded package to JAMF.
+Identifier: com.github.yakdevinc.autopk.patchpolicy.GoogleChrome
+ParentRecipe: com.github.yakdevinc.pkgupload.GoogleChrome
+MinimumVersion: "2.3"
+
+Input:
+  patch_softwaretitle: Google Chrome
+  patch_template: Patch_Self-service_template.xml
+
+
+
+Process:
+  - Processor: com.github.grahampugh.jamf-upload.processors/JamfPatchUploader
+    Arguments:
+      patch_softwaretitle: "%patch_softwaretitle%"
+      patch_template: "%patch_template%"
+      comp_groups: All Managed Clients
+      replace_patch: true
+      
+

@@ -6,13 +6,8 @@ MinimumVersion: "2.3"
 Input:
   CATEGORY: Browsers
   POLICY_CATEGORY: Updates
-  POLICY_TEMPLATE: Computer_Policy_Template_wo_selfService.xml
-  POLICY_NAME: LATEST %NAME% UPDATE
-
+  
 Process:
- # - Procesesor: PathDeleter
-  #  Arguments: 
-   #   path_list: "%RECIPE_CACHE_DIR%/unpack"
 
   - Processor: com.github.grahampugh.jamf-upload.processors/JamfPackageUploader
     Arguments:
@@ -23,10 +18,5 @@ Process:
     Arguments:
       category_name: "%POLICY_CATEGORY%"
       Sleep: 60
+      replace_category: true
       
-  - Processor: com.github.grahampugh.jamf-upload.processors/JamfPolicyUploader
-    Arguments:
-      Policy_Name: '%POLICY_NAME%'
-      policy_template: "%POLICY_TEMPLATE%"
-      POLICY_CATEGORY: "%POLICY_CATEGORY%"
-      pkg_name: '%pkg_name%'

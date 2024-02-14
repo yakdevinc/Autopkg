@@ -1,0 +1,7 @@
+  - Processor: com.github.grahampugh.jamf-upload.processors/JamfPolicyUploader
+    Arguments:
+      policy_name: "%Policy_Name%"
+      policy_template: "%POLICY_TEMPLATE%"
+      POLICY_CATEGORY: "%POLICY_CATEGORY%"
+      pkg_name: "%pkg_name%"
+      replace_policy: true

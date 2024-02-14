@@ -39,4 +39,7 @@ Process:
       source_pkg: "%pathname%"
       pkg_path: "%RECIPE_CACHE_DIR%/GoogleChrome-%version%.pkg"
 
+  - Processor: PathDeleter
+    Arguments: 
+      path_list: "%RECIPE_CACHE_DIR%/unpack"
 
